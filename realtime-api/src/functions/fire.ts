@@ -15,6 +15,7 @@ const signalrOutput = output.generic({
 app.http("fire", {
   methods: ["GET"],
   authLevel: "anonymous",
+  extraOutputs: [signalrOutput],
   handler: (
     request: HttpRequest,
     context: InvocationContext

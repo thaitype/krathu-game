@@ -9,11 +9,13 @@ const signalrInput = input.generic({
 app.http('negotiate', {
     methods: ['POST'],
     authLevel: 'anonymous',
+    route: 'negotiate',
+    extraInputs: [signalrInput],
     handler: (request: HttpRequest, context: InvocationContext): HttpResponseInit => {
         context.log(`Http function processed request for url "${request.url}"`);
     
         const signalRInput = context.extraInputs.get(signalrInput);
-        return { body: String(signalRInput) };
+        return { body: JSON.stringify(signalRInput) };
     },
 });
  
